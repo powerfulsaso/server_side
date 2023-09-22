@@ -25,6 +25,13 @@ app.get('/api/employees', (request, response) => {
              */
 
             response.send(employees.slice(0, 2));
+        } else if (page == 2) {
+            /**
+             * 3. GET http://localhost:8000/api/employees?page=2
+             * Devolverá del elemento 2 al elemento 3 del listado
+             */
+
+            response.send(employees.slice(1, 3));
         }
 
     } else {
