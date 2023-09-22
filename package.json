@@ -1,0 +1,29 @@
+{
+  "name": "server_side",
+  "version": "1.0.0",
+  "description": "Actividad01 Intro a node",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerfulsaso/server_side.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "api"
+  ],
+  "author": "powerfulsaso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/powerfulsaso/server_side/issues"
+  },
+  "homepage": "https://github.com/powerfulsaso/server_side#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
