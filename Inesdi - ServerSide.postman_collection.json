@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "015e8634-3341-4d1d-a86f-be6013679569",
+		"name": "Inesdi - ServerSide",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22996423"
+	},
+	"item": [
+		{
+			"name": "page_user_badges",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/employees?badges=black",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"employees"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "badges",
+							"value": "black"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Oldest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/employees/oldest",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"employees",
+						"oldest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee by Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/employees/sue",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"employees",
+						"sue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Isaac\",\n        \"age\": 19,\n        \"phone\": {\n            \"personal\": \"555-123-123\",\n            \"work\": \"555-456-456\",\n            \"ext\": \"2342\"\n        },\n        \"privileges\": \"user\",\n        \"favorites\": {\n            \"artist\": \"Picasso\",\n            \"food\": \"pizza\"\n        },\n        \"finished\": [\n            17,\n            3\n        ],\n        \"badges\": [\n            \"blue\",\n            \"black\"\n        ],\n        \"points\": [\n            {\n                \"points\": 85,\n                \"bonus\": 20\n            },\n            {\n                \"points\": 85,\n                \"bonus\": 10\n            }\n        ]\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/employees",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/api",
+			"type": "string"
+		}
+	]
+}
