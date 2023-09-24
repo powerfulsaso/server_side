@@ -16,30 +16,57 @@ const app = express();
 app.get('/api/employees', (request, response) => {
     queryParams = request.query;
     page = queryParams.page;
-    if (page) {
+
+    if (page && page > 0) {
         console.log(`page= ${page}`);
+
         if (page == 1) {
-            /**
-             * 2. GET http://localhost:8000/api/employees?page=1
-             * Devolverá los primeros 2 empleados. Del elemento 0 al elemento 1 del listado
-             */
-
-            response.send(employees.slice(0, 2));
-        } else if (page == 2) {
-            /**
-             * 3. GET http://localhost:8000/api/employees?page=2
-             * Devolverá del elemento 2 al elemento 3 del listado
-             */
-
-            response.send(employees.slice(1, 3));
+            response
+                .send(
+                    employees.slice(0, 2)
+                );
         }
 
+        if (page == 2) {
+            response
+                .send(
+                    employees.slice(2, 4)
+                );
+        }
+
+        if (page > 2) {
+
+            /**
+             * 3. GET http://localhost:8000/api/employees?page=N
+             * Devolverá del elemento (2 * (N - 1)) al (2 * (N - 1)) + 1.
+             */
+            startIndex = (2 * (page - 1));
+            endIndex = (2 * (page - 1)) + 1;
+            response.send(employees.slice(startIndex, endIndex));
+        }
     } else {
         response.send(employees);
     }
 
 });
 
+
+app.get('/api/employees/oldest', (request, response) => {
+    /**
+     * 4. GET http://localhost:8000/api/employees/oldest
+     * Devolverá el objeto individual correspondiente al empleado con más edad. En caso de existir más
+     * de uno, se devolverá la primera ocurrencia
+     */
+
+    if (employees.length) {
+        response
+            .send(
+                employees
+                    .sort((a, b) => b.age - a.age)[0]
+
+            );
+    }
+});
 
 //start server
 app.listen(8000, () => {
