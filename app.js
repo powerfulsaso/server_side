@@ -14,12 +14,12 @@ app.use(express.json());
 
 /** Routes */
 app.get('/api/employees', (request, response) => {
-    queryParams = request.query;
+    let queryParams = request.query;
     let page = queryParams.page;
     let badges = queryParams.badges ? queryParams.badges : "";
     let userBool = false;
     if (queryParams.user) {
-        userBool = queryParams.user.toLowerCase() === 'true' ? true : false;
+        userBool = queryParams.user.toLowerCase() === 'true';
     }
 
     if (page && page > 0) {
@@ -53,8 +53,8 @@ app.get('/api/employees', (request, response) => {
              * 3. GET http://localhost:8000/api/employees?page=N
              * Devolverá del elemento (2 * (N - 1)) al (2 * (N - 1)) + 1.
              */
-            startIndex = (2 * (page - 1));
-            endIndex = (2 * (page - 1)) + 1;
+            let startIndex = (2 * (page - 1));
+            let endIndex = (2 * (page - 1)) + 1;
             response.send(employees.slice(startIndex, endIndex));
         }
     } else
