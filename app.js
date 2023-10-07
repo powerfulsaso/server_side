@@ -161,6 +161,8 @@ app.get('/api/employees/:name', (request, response) => {
 });
 
 
+//Antes de realizar las pruebas las lineas que inicializan el app deben 
+//estar en comentario.
 //start server
 app.listen(8000, () => {
     console.log('server listening on port 8000!');
